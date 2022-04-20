@@ -1,33 +1,34 @@
-package com.example.hilt
+package com.example.hilt.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import com.example.hilt.R
 import com.example.hilt.databinding.ActivityRegisterBinding
-import com.example.hilt.db.User
-import com.example.hilt.db.UserRepository
-import com.example.hilt.db.UserViewModel
-import com.example.hilt.db.UserViewModelFactory
+import com.example.hilt.domain.model.User
+import com.example.hilt.presentation.UserViewModel
+import com.example.hilt.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
-    private lateinit var userViewModel: UserViewModel
 
-    @Inject lateinit var viewModelFactory: UserViewModelFactory
+    @Inject
+    lateinit var viewModelFactory: UserViewModel.UserViewModelFactory
+    private val userViewModel: UserViewModel by viewModels {
+        UserViewModel.providesFactory(
+            viewModelFactory,
+            "ID"
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register)
-
-
-
-        userViewModel = ViewModelProvider(this, viewModelFactory)[UserViewModel::class.java]
 
         binding.textViewLoginNow.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
@@ -49,8 +50,7 @@ class RegisterActivity : AppCompatActivity() {
                 password = binding.editTextTextPassword.text.toString()
             )
         )
-
-        Toast.makeText(this, "Success", Toast.LENGTH_LONG).show()
+        toast(this, "Success")
 
         startActivity(Intent(this, MainActivity::class.java))
     }

@@ -1,4 +1,4 @@
-package com.example.hilt.db
+package com.example.hilt.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

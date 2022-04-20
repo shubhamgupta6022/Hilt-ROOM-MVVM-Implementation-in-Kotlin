@@ -1,9 +1,9 @@
-package com.example.hilt.db
+package com.example.hilt.data.data_source
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.hilt.data.data_source.UserDao
+import com.example.hilt.domain.model.User
 
 @Database(entities = [User::class], version = 1)
 abstract class UserDb : RoomDatabase() {

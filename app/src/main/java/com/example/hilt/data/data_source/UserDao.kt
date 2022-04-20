@@ -1,9 +1,10 @@
-package com.example.hilt.db
+package com.example.hilt.data.data_source
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.hilt.domain.model.User
 
 @Dao
 interface UserDao {

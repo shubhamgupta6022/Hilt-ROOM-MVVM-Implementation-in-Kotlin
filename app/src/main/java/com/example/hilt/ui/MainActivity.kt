@@ -1,17 +1,16 @@
-package com.example.hilt
+package com.example.hilt.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.hilt.R
 import com.example.hilt.databinding.ActivityMainBinding
-import com.example.hilt.db.UserRepository
-import com.example.hilt.db.UserViewModel
-import com.example.hilt.db.UserViewModelFactory
+import com.example.hilt.presentation.UserViewModel
+import com.example.hilt.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,15 +20,19 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
-    private lateinit var userViewModel: UserViewModel
 
-    @Inject lateinit var viewModelFactory: UserViewModelFactory
+    @Inject
+    lateinit var viewModelFactory: UserViewModel.UserViewModelFactory
+    private val userViewModel: UserViewModel by viewModels {
+        UserViewModel.providesFactory(
+            viewModelFactory,
+            "ID"
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-        userViewModel = ViewModelProvider(this, viewModelFactory)[UserViewModel::class.java]
 
         binding.buttonLogin.setOnClickListener {
             login()
@@ -48,10 +51,10 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.Main) {
             val uid = userViewModel.getUid(email, password)
             if (uid == null) {
-                Toast.makeText(applicationContext, "Error", Toast.LENGTH_LONG).show()
+                toast(this@MainActivity,"Error")
             } else {
                 Log.d("MainActivity", "uid: $uid")
-                Toast.makeText(applicationContext, "uid: $uid", Toast.LENGTH_LONG).show()
+                toast(this@MainActivity,"uid: $uid")
             }
         }
 

@@ -1,5 +1,8 @@
-package com.example.hilt.db
+package com.example.hilt.domain.repository
 
+import com.example.hilt.data.data_source.UserDao
+import com.example.hilt.domain.model.User
+import com.example.hilt.data.data_source.UserDb
 import javax.inject.Inject
 
 class UserRepository @Inject constructor(userDb: UserDb) {
