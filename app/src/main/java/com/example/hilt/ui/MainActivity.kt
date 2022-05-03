@@ -6,12 +6,18 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.example.hilt.R
 import com.example.hilt.databinding.ActivityMainBinding
+import com.example.hilt.domain.model.User
 import com.example.hilt.presentation.UserViewModel
 import com.example.hilt.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,7 +26,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
-
+    private var TAG = MainActivity::class.simpleName
     @Inject
     lateinit var viewModelFactory: UserViewModel.UserViewModelFactory
     private val userViewModel: UserViewModel by viewModels {
@@ -34,6 +40,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+//        val compositeDisposable = CompositeDisposable()
+//        compositeDisposable.add(getObservable().subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe(
+//                { user ->
+//                    Log.d(TAG, "$user")
+//                }, { error ->
+//                    Log.d(TAG, "${error.message}")
+//                })
+//        )
+
         binding.buttonLogin.setOnClickListener {
             login()
         }
@@ -44,6 +61,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun getObservable(): Flowable<MutableList<String>> {
+        return userViewModel.allUsers
+    }
+
     private fun login() {
         val email = binding.editTextTextEmailAddress.text.toString()
         val password = binding.editTextTextPassword.text.toString()
@@ -51,10 +72,14 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.Main) {
             val uid = userViewModel.getUid(email, password)
             if (uid == null) {
-                toast(this@MainActivity,"Error")
+                toast(this@MainActivity, "Error")
             } else {
                 Log.d("MainActivity", "uid: $uid")
-                toast(this@MainActivity,"uid: $uid")
+                toast(this@MainActivity, "uid: $uid")
+
+                val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                startActivity(intent)
+
             }
         }
 

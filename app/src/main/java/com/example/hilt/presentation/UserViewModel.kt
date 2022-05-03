@@ -1,19 +1,17 @@
 package com.example.hilt.presentation
 
+import android.database.Observable
 import android.util.Log
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.hilt.domain.model.User
 import com.example.hilt.domain.repository.UserRepository
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
-import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.rxjava3.core.Flowable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 class UserViewModel @AssistedInject constructor(
     private val repository: UserRepository,
@@ -37,16 +35,34 @@ class UserViewModel @AssistedInject constructor(
         }
     }
 
+    lateinit var allUsers : Flowable<MutableList<String>>
+
     init {
         Log.d("hilt", userId)
+
+        viewModelScope.launch {
+            allUsers = getAllUsers()
+            Log.d("UserViewModel", "$allUsers")
+        }
+
     }
 
     fun insert(user: User) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(user)
     }
 
-    fun getAllUsers() = viewModelScope.launch(Dispatchers.IO) {
-        repository.getAllUsers()
+    private suspend fun getAllUsers(): Flowable<MutableList<String>> {
+        val list = viewModelScope.async(Dispatchers.IO) {
+            repository.getAllUsers()
+        }.await()
+
+        var usersList: MutableList<String> = mutableListOf<String>()
+        list.forEach { it ->
+            usersList.add(it.name)
+        }
+//        usersList.add
+        Log.d("UserViewModel", "${list[1]}")
+        return Flowable.fromIterable(listOf(usersList))
     }
 
     suspend fun getUid(email: String, password: String): Int? {

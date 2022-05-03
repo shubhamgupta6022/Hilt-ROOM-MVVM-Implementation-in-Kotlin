@@ -3,6 +3,9 @@ package com.example.hilt.domain.repository
 import com.example.hilt.data.data_source.UserDao
 import com.example.hilt.domain.model.User
 import com.example.hilt.data.data_source.UserDb
+import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Observer
 import javax.inject.Inject
 
 class UserRepository @Inject constructor(userDb: UserDb) {
@@ -12,7 +15,7 @@ class UserRepository @Inject constructor(userDb: UserDb) {
         userDao.insert(user)
     }
 
-    suspend fun getAllUsers(): List<User> {
+    fun getAllUsers(): List<User> {
         return userDao.getAllUsers()
     }
 

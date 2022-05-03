@@ -9,22 +9,4 @@ import com.example.hilt.domain.model.User
 abstract class UserDb : RoomDatabase() {
     abstract fun userDao(): UserDao
 
-//    companion object {
-//        private var INSTANCE: UserDb? = null
-//
-//        fun getInstance(context: Context): UserDb {
-//            return INSTANCE ?: synchronized(this) {
-//                val instance = Room.databaseBuilder(
-//                    context.applicationContext,
-//                    UserDb::class.java,
-//                    "db"
-//                )
-//                    .fallbackToDestructiveMigration()
-//                    .build()
-//                INSTANCE = instance
-//                // return instance
-//                instance
-//            }
-//        }
-//    }
 }

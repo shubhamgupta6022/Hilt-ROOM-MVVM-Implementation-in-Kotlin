@@ -5,6 +5,8 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.hilt.domain.model.User
+import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.core.Observable
 
 @Dao
 interface UserDao {
@@ -12,7 +14,7 @@ interface UserDao {
     suspend fun insert(user: User)
 
     @Query("SELECT * FROM User")
-    suspend fun getAllUsers(): List<User>
+    fun getAllUsers(): List<User>
 
     @Query("SELECT uid FROM User WHERE emailId LIKE :email AND password LIKE :password")
     suspend fun getUid(email: String, password: String): Int?
