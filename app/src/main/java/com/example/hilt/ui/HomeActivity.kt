@@ -2,22 +2,19 @@ package com.example.hilt.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hilt.domain.network.Retrofit
 import com.example.hilt.R
 import com.example.hilt.application.MyApplication
 import com.example.hilt.core.adapter.UserListAdapter
+import com.example.hilt.data.repository.ApiRepositoryImpl
 import com.example.hilt.databinding.ActivityHomeBinding
 import com.example.hilt.domain.model.Data
-import com.example.hilt.domain.repository.ApiRepository
 import com.example.hilt.domain.viewModelFactory.ApiViewModelFactory
 import com.example.hilt.presentation.ApiViewModel
-import com.example.hilt.presentation.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -32,7 +29,7 @@ class HomeActivity : AppCompatActivity() {
     private val userArrayList = ArrayList<Data>()
 
     @Inject
-    lateinit var apiRepository: ApiRepository
+    lateinit var apiRepository: ApiRepositoryImpl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

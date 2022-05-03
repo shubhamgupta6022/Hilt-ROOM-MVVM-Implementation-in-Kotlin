@@ -2,13 +2,13 @@ package com.example.hilt.presentation
 
 import android.util.Log
 import androidx.lifecycle.*
+import com.example.hilt.data.repository.ApiRepositoryImpl
 import com.example.hilt.domain.model.Data
-import com.example.hilt.domain.repository.ApiRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class ApiViewModel @Inject constructor(private val repository: ApiRepository) : ViewModel() {
+class ApiViewModel @Inject constructor(private val repository: ApiRepositoryImpl) : ViewModel() {
     private var observableList = MutableLiveData<List<Data>>()
     private val TAG = ApiViewModel::class.java.simpleName
 

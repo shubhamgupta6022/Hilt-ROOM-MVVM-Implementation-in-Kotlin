@@ -13,10 +13,6 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(user: User)
 
-    @Query("SELECT * FROM User")
-    fun getAllUsers(): List<User>
-
     @Query("SELECT uid FROM User WHERE emailId LIKE :email AND password LIKE :password")
     suspend fun getUid(email: String, password: String): Int?
-
 }

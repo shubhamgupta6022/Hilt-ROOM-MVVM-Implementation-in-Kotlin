@@ -1,9 +1,9 @@
 package com.example.hilt.application
 
 import android.app.Application
+import com.example.hilt.data.repository.ApiRepositoryImpl
 import com.example.hilt.domain.network.ApiService
 import com.example.hilt.domain.network.Retrofit
-import com.example.hilt.domain.repository.ApiRepository
 import com.example.hilt.domain.viewModelFactory.ApiViewModelFactory
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
@@ -11,7 +11,7 @@ import javax.inject.Inject
 @HiltAndroidApp
 class MyApplication : Application() {
     @Inject
-    lateinit var apiRepository: ApiRepository
+    lateinit var apiRepository: ApiRepositoryImpl
 
     @Inject
     lateinit var apiViewModelFactory: ApiViewModelFactory
@@ -26,7 +26,7 @@ class MyApplication : Application() {
 
     private fun initialize() {
         apiService = Retrofit.api
-        apiRepository = ApiRepository(apiService)
+        apiRepository = ApiRepositoryImpl(apiService)
         apiViewModelFactory = ApiViewModelFactory(apiRepository)
     }
 }
