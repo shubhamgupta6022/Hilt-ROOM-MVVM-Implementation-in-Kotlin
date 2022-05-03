@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hilt.domain.network.Retrofit
 import com.example.hilt.R
+import com.example.hilt.application.MyApplication
 import com.example.hilt.core.adapter.UserListAdapter
 import com.example.hilt.databinding.ActivityHomeBinding
 import com.example.hilt.domain.model.Data
@@ -31,22 +32,16 @@ class HomeActivity : AppCompatActivity() {
     private val userArrayList = ArrayList<Data>()
 
     @Inject
-    lateinit var viewModelFactory: UserViewModel.UserViewModelFactory
-    private val userViewModel: UserViewModel by viewModels {
-        UserViewModel.providesFactory(
-            viewModelFactory,
-            "ID"
-        )
-    }
+    lateinit var apiRepository: ApiRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
 
-        val api = Retrofit.api
-        val repository = ApiRepository(api = api)
+        apiRepository = (application as MyApplication).apiRepository
+
         apiViewModel =
-            ViewModelProvider(this, ApiViewModelFactory(repository))[ApiViewModel::class.java]
+            ViewModelProvider(this, ApiViewModelFactory(apiRepository))[ApiViewModel::class.java]
 
         userListAdapter = UserListAdapter(this, ArrayList<Data>())
         recyclerView = findViewById(R.id.recyclerView)

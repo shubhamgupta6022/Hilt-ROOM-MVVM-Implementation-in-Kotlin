@@ -40,17 +40,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-//        val compositeDisposable = CompositeDisposable()
-//        compositeDisposable.add(getObservable().subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe(
-//                { user ->
-//                    Log.d(TAG, "$user")
-//                }, { error ->
-//                    Log.d(TAG, "${error.message}")
-//                })
-//        )
-
         binding.buttonLogin.setOnClickListener {
             login()
         }
@@ -59,10 +48,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
 
-    }
-
-    private fun getObservable(): Flowable<MutableList<String>> {
-        return userViewModel.allUsers
     }
 
     private fun login() {

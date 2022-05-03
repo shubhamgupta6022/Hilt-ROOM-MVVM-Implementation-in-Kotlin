@@ -1,12 +1,10 @@
 package com.example.hilt.domain.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.example.hilt.domain.model.UserModel
-import com.example.hilt.domain.network.Api
+import com.example.hilt.domain.network.ApiService
+import javax.inject.Inject
 
-class ApiRepository(private val api: Api) {
+class ApiRepository @Inject constructor(private val apiService: ApiService) {
     private val TAG = ApiRepository::class.java.simpleName
 
-    fun getObservableUsers() = api.getObservableUsers()
+    fun getObservableUsers() = apiService.getObservableUsers()
 }
