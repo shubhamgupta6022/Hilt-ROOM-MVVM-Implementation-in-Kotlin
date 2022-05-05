@@ -4,6 +4,7 @@ import com.example.hilt.data.datasource.user.UserDb
 import com.example.hilt.data.datasource.user.UserDao
 import com.example.hilt.core.model.User
 import com.example.hilt.domain.repository.user.UserRepository
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(userDb: UserDb) : UserRepository {
@@ -15,5 +16,9 @@ class UserRepositoryImpl @Inject constructor(userDb: UserDb) : UserRepository {
 
     override suspend fun getUid(email: String, password: String): Int? {
         return userDao.getUid(email, password)
+    }
+
+    override fun getAllUsers(): Flow<List<User>> {
+        return userDao.getAllUsers()
     }
 }

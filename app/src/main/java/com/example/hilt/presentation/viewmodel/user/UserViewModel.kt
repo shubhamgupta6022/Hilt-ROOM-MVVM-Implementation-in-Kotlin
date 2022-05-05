@@ -9,12 +9,16 @@ import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class UserViewModel @AssistedInject constructor(
     private val repository: UserRepositoryImpl,
     @Assisted private val userId: String
 ) : ViewModel() {
+
+    private val TAG = UserViewModel::class.java.simpleName
 
     @AssistedFactory
     interface UserViewModelFactory {
@@ -33,9 +37,25 @@ class UserViewModel @AssistedInject constructor(
         }
     }
 
+    var usersList = MutableLiveData<List<User>>()
+
     init {
         Log.d("hilt", userId)
 
+        viewModelScope.launch {
+            repository.getAllUsers()
+                .catch { exception -> notifyError(exception) }
+                .collect { user ->
+                    usersList.value = user
+                }
+        }
+    }
+
+    val allUsers: LiveData<List<User>>
+        get() = usersList
+
+    private fun notifyError(exception: Throwable) {
+        Log.d(TAG, "$exception")
     }
 
     fun insert(user: User) = viewModelScope.launch(Dispatchers.IO) {

@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.hilt.core.model.User
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDao {
@@ -13,4 +14,7 @@ interface UserDao {
 
     @Query("SELECT uid FROM User WHERE emailId LIKE :email AND password LIKE :password")
     suspend fun getUid(email: String, password: String): Int?
+
+    @Query("SELECT * FROM User")
+    fun getAllUsers(): Flow<List<User>>
 }
