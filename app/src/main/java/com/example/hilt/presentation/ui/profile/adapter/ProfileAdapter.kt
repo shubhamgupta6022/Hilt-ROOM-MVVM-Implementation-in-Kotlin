@@ -1,4 +1,4 @@
-package com.example.hilt.core.adapter
+package com.example.hilt.presentation.ui.profile.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -12,15 +12,15 @@ import com.bumptech.glide.Glide
 import com.example.hilt.R
 import com.example.hilt.core.model.Data
 
-class UserListAdapter(private val context: Context, private var userListList: ArrayList<Data>) :
-    RecyclerView.Adapter<UserListAdapter.UserListHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListHolder {
-        return UserListHolder(
+class ProfileAdapter(private val context: Context, private var userListList: ArrayList<Data>) :
+    RecyclerView.Adapter<ProfileAdapter.ProfileHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileHolder {
+        return ProfileHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.list_row, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: UserListHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProfileHolder, position: Int) {
         val userList = userListList[position]
         holder.email.text = userList.email.toString()
         holder.name.text = userList.first_name
@@ -40,7 +40,7 @@ class UserListAdapter(private val context: Context, private var userListList: Ar
         notifyDataSetChanged()
     }
 
-    inner class UserListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ProfileHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.name)
         val email: TextView = itemView.findViewById(R.id.email)
         val image: ImageView = itemView.findViewById(R.id.image)

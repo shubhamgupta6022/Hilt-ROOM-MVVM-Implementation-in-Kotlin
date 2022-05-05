@@ -8,9 +8,12 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class ProfileViewModel @Inject constructor(private val repository: ProfileRepository) : ViewModel() {
+class ProfileViewModel() : ViewModel() {
     private var observableList = MutableLiveData<List<Data>>()
     private val TAG = ProfileViewModel::class.java.simpleName
+
+    @Inject
+    lateinit var repository: ProfileRepository
 
     init {
         observableList = getUserListObserver()
