@@ -1,12 +1,10 @@
-package com.example.hilt.data.data_source
+package com.example.hilt.data.datasource
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.hilt.domain.model.User
-import io.reactivex.rxjava3.core.Flowable
-import io.reactivex.rxjava3.core.Observable
+import com.example.hilt.core.model.User
 
 @Dao
 interface UserDao {

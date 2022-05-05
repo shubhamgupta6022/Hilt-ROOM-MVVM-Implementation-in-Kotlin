@@ -1,4 +1,4 @@
-package com.example.hilt.domain.model
+package com.example.hilt.core.model
 
 data class Data(
     val avatar: String,

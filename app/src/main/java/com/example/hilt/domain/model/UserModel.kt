@@ -1,5 +1,7 @@
 package com.example.hilt.domain.model
 
+import com.example.hilt.core.model.Data
+
 data class UserModel(
     val data: List<Data>,
     val page: Int,

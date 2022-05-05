@@ -1,6 +1,6 @@
-package com.example.hilt.domain.network
+package com.example.hilt.data.api
 
-import com.example.hilt.utils.Url
+import com.example.hilt.core.utils.Url
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

@@ -1,9 +1,9 @@
-package com.example.hilt.application.di
+package com.example.hilt.application.di.modules
 
 import android.content.Context
 import androidx.room.Room
-import com.example.hilt.data.data_source.UserDao
-import com.example.hilt.data.data_source.UserDb
+import com.example.hilt.data.datasource.UserDao
+import com.example.hilt.data.datasource.UserDb
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

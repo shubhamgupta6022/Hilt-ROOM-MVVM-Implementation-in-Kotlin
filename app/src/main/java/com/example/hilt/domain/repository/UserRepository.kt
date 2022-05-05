@@ -1,10 +1,8 @@
 package com.example.hilt.domain.repository
 
-import com.example.hilt.domain.model.User
+import com.example.hilt.core.model.User
 
 interface UserRepository {
-
-//    private var userDao: UserDao = userDb.userDao()
 
     suspend fun insert(user: User)
 

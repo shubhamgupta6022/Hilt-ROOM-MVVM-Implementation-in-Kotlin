@@ -10,17 +10,17 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.hilt.R
-import com.example.hilt.domain.model.Data
+import com.example.hilt.core.model.Data
 
 class UserListAdapter(private val context: Context, private var userListList: ArrayList<Data>) :
     RecyclerView.Adapter<UserListAdapter.UserListHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListAdapter.UserListHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListHolder {
         return UserListHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.list_row, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: UserListAdapter.UserListHolder, position: Int) {
+    override fun onBindViewHolder(holder: UserListHolder, position: Int) {
         val userList = userListList[position]
         holder.email.text = userList.email.toString()
         holder.name.text = userList.first_name

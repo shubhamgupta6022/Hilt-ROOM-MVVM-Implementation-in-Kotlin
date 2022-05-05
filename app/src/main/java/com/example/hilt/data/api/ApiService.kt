@@ -1,4 +1,4 @@
-package com.example.hilt.domain.network
+package com.example.hilt.data.api
 
 
 import com.example.hilt.domain.model.UserModel

@@ -1,8 +1,8 @@
 package com.example.hilt.data.repository
 
-import com.example.hilt.data.data_source.UserDb
-import com.example.hilt.data.data_source.UserDao
-import com.example.hilt.domain.model.User
+import com.example.hilt.data.datasource.UserDb
+import com.example.hilt.data.datasource.UserDao
+import com.example.hilt.core.model.User
 import com.example.hilt.domain.repository.UserRepository
 import javax.inject.Inject
 

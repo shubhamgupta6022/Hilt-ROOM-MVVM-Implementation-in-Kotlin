@@ -1,4 +1,4 @@
-package com.example.hilt.ui
+package com.example.hilt.presentation.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +7,9 @@ import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.example.hilt.R
 import com.example.hilt.databinding.ActivityRegisterBinding
-import com.example.hilt.domain.model.User
-import com.example.hilt.presentation.UserViewModel
-import com.example.hilt.utils.toast
+import com.example.hilt.core.model.User
+import com.example.hilt.presentation.viewmodel.UserViewModel
+import com.example.hilt.core.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
