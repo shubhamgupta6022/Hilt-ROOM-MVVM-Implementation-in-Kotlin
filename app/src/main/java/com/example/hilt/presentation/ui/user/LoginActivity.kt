@@ -8,7 +8,7 @@ import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.example.hilt.R
-import com.example.hilt.databinding.ActivityMainBinding
+import com.example.hilt.databinding.ActivityLoginBinding
 import com.example.hilt.presentation.viewmodel.user.UserViewModel
 import com.example.hilt.core.utils.toast
 import com.example.hilt.presentation.ui.profile.HomeActivity
@@ -20,7 +20,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMainBinding
+    lateinit var binding: ActivityLoginBinding
     private var TAG = LoginActivity::class.simpleName
     @Inject
     lateinit var viewModelFactory: UserViewModel.UserViewModelFactory
