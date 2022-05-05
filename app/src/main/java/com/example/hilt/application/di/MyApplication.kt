@@ -1,11 +1,8 @@
 package com.example.hilt.application.di
 
 import android.app.Application
-import com.example.hilt.data.repository.ApiRepositoryImpl
-import com.example.hilt.data.api.ApiService
-import com.example.hilt.data.api.Retrofit
-import com.example.hilt.application.viewmodelfactory.ApiViewModelFactory
-import com.example.hilt.domain.repository.ApiRepository
+import com.example.hilt.data.api.profile.ProfileApiService
+import com.example.hilt.data.api.profile.Retrofit
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
@@ -13,7 +10,7 @@ import javax.inject.Inject
 class MyApplication : Application() {
 
     @Inject
-    lateinit var apiService: ApiService
+    lateinit var profileApiService: ProfileApiService
 
     override fun onCreate() {
         super.onCreate()
@@ -21,6 +18,6 @@ class MyApplication : Application() {
     }
 
     private fun initialize() {
-        apiService = Retrofit.api
+        profileApiService = Retrofit.PROFILE_API
     }
 }

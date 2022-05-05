@@ -1,4 +1,4 @@
-package com.example.hilt.presentation.ui
+package com.example.hilt.presentation.ui.user
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.hilt.R
 import com.example.hilt.databinding.ActivityRegisterBinding
 import com.example.hilt.core.model.User
-import com.example.hilt.presentation.viewmodel.UserViewModel
+import com.example.hilt.presentation.viewmodel.user.UserViewModel
 import com.example.hilt.core.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -31,7 +31,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register)
 
         binding.textViewLoginNow.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
         }
 
         binding.buttonRegister.setOnClickListener {
@@ -52,6 +52,6 @@ class RegisterActivity : AppCompatActivity() {
         )
         toast(this, "Success")
 
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, LoginActivity::class.java))
     }
 }

@@ -1,4 +1,4 @@
-package com.example.hilt.data.datasource
+package com.example.hilt.data.datasource.user
 
 import androidx.room.Dao
 import androidx.room.Insert

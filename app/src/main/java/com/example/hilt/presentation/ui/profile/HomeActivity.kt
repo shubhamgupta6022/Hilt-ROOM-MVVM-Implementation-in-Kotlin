@@ -1,4 +1,4 @@
-package com.example.hilt.presentation.ui
+package com.example.hilt.presentation.ui.profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,15 +8,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hilt.R
-import com.example.hilt.application.di.MyApplication
-import com.example.hilt.application.di.modules.ApiAppModule
 import com.example.hilt.core.adapter.UserListAdapter
-import com.example.hilt.data.repository.ApiRepositoryImpl
 import com.example.hilt.databinding.ActivityHomeBinding
 import com.example.hilt.core.model.Data
-import com.example.hilt.application.viewmodelfactory.ApiViewModelFactory
-import com.example.hilt.domain.repository.ApiRepository
-import com.example.hilt.presentation.viewmodel.ApiViewModel
+import com.example.hilt.presentation.ui.profile.viewmodelfactory.ProfileViewModelFactory
+import com.example.hilt.domain.repository.profile.ProfileRepository
+import com.example.hilt.presentation.viewmodel.profile.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -27,11 +24,11 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var userListAdapter: UserListAdapter
 
-    private lateinit var apiViewModel: ApiViewModel
+    private lateinit var profileViewModel: ProfileViewModel
     private val userArrayList = ArrayList<Data>()
 
     @Inject
-    lateinit var apiRepository: ApiRepository
+    lateinit var profileRepository: ProfileRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +36,8 @@ class HomeActivity : AppCompatActivity() {
 
 //        apiRepository = (application as MyApplication).apiRepository
 
-        apiViewModel =
-            ViewModelProvider(this, ApiViewModelFactory(apiRepository))[ApiViewModel::class.java]
+        profileViewModel =
+            ViewModelProvider(this, ProfileViewModelFactory(profileRepository))[ProfileViewModel::class.java]
 
         userListAdapter = UserListAdapter(this, ArrayList<Data>())
         recyclerView = findViewById(R.id.recyclerView)
@@ -51,7 +48,7 @@ class HomeActivity : AppCompatActivity() {
             adapter = userListAdapter
         }
 
-        apiViewModel.obsList.observe(this, Observer<List<Data>> {
+        profileViewModel.obsList.observe(this, Observer<List<Data>> {
             it.forEach { data ->
                 userArrayList.add(data)
             }

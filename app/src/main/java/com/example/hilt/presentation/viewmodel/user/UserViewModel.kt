@@ -1,8 +1,8 @@
-package com.example.hilt.presentation.viewmodel
+package com.example.hilt.presentation.viewmodel.user
 
 import android.util.Log
 import androidx.lifecycle.*
-import com.example.hilt.data.repository.UserRepositoryImpl
+import com.example.hilt.data.repository.user.UserRepositoryImpl
 import com.example.hilt.core.model.User
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory

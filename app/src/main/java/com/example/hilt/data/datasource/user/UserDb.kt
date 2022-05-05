@@ -1,4 +1,4 @@
-package com.example.hilt.data.datasource
+package com.example.hilt.data.datasource.user
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

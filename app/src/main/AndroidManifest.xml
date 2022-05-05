@@ -15,13 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.hilt.presentation.ui.HomeActivity"
+            android:name="com.example.hilt.presentation.ui.profile.HomeActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.hilt.presentation.ui.RegisterActivity"
+            android:name="com.example.hilt.presentation.ui.user.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.hilt.presentation.ui.MainActivity"
+            android:name="com.example.hilt.presentation.ui.user.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

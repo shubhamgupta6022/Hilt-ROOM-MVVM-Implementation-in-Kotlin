@@ -1,4 +1,4 @@
-package com.example.hilt.domain.repository
+package com.example.hilt.domain.repository.user
 
 import com.example.hilt.core.model.User
 

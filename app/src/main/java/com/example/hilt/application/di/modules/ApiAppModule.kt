@@ -1,27 +1,26 @@
 package com.example.hilt.application.di.modules
 
-import com.example.hilt.data.api.ApiService
-import com.example.hilt.data.api.Retrofit
-import com.example.hilt.data.repository.ApiRepositoryImpl
-import com.example.hilt.domain.repository.ApiRepository
+import com.example.hilt.data.api.profile.ProfileApiService
+import com.example.hilt.data.api.profile.Retrofit
+import com.example.hilt.data.repository.profile.ProfileRepositoryImpl
+import com.example.hilt.domain.repository.profile.ProfileRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object ApiAppModule {
 
     @Provides
-    fun providesApi(): ApiService {
-        return Retrofit.api
+    fun providesApi(): ProfileApiService {
+        return Retrofit.PROFILE_API
     }
 
     @Provides
-    fun providesRepository(): ApiRepository {
-        return ApiRepositoryImpl(providesApi())
+    fun providesRepository(): ProfileRepository {
+        return ProfileRepositoryImpl(providesApi())
     }
 
 }

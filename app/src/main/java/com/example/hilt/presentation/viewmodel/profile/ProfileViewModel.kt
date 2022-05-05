@@ -1,17 +1,16 @@
-package com.example.hilt.presentation.viewmodel
+package com.example.hilt.presentation.viewmodel.profile
 
 import android.util.Log
 import androidx.lifecycle.*
-import com.example.hilt.data.repository.ApiRepositoryImpl
 import com.example.hilt.core.model.Data
-import com.example.hilt.domain.repository.ApiRepository
+import com.example.hilt.domain.repository.profile.ProfileRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class ApiViewModel @Inject constructor(private val repository: ApiRepository) : ViewModel() {
+class ProfileViewModel @Inject constructor(private val repository: ProfileRepository) : ViewModel() {
     private var observableList = MutableLiveData<List<Data>>()
-    private val TAG = ApiViewModel::class.java.simpleName
+    private val TAG = ProfileViewModel::class.java.simpleName
 
     init {
         observableList = getUserListObserver()
