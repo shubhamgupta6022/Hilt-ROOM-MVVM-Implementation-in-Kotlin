@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.example.hilt.data.datasource.user.UserDao
 import com.example.hilt.data.datasource.user.UserDb
+import com.example.hilt.data.repository.user.UserRepositoryImpl
+import com.example.hilt.domain.repository.user.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,6 +31,11 @@ object AppModule {
     @Provides
     fun provideDao(userDb: UserDb): UserDao {
         return userDb.userDao()
+    }
+
+    @Provides
+    fun provideUserRepository(userDb: UserDb): UserRepository {
+        return UserRepositoryImpl(userDb = userDb)
     }
 
 }

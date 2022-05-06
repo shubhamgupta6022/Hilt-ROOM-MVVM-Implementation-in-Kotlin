@@ -6,9 +6,10 @@ import com.example.hilt.domain.repository.profile.ProfileRepository
 import com.example.hilt.presentation.viewmodel.profile.ProfileViewModel
 import javax.inject.Inject
 
-class ProfileViewModelFactory @Inject constructor(): ViewModelProvider.Factory  {
+class ProfileViewModelFactory @Inject constructor(private val profileRepository: ProfileRepository) :
+    ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return ProfileViewModel() as T
+        return ProfileViewModel(profileRepository) as T
     }
 
 }

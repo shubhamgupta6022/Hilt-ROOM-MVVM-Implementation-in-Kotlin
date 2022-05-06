@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.example.hilt.R
 import com.example.hilt.databinding.ActivityRegisterBinding
 import com.example.hilt.core.model.User
 import com.example.hilt.presentation.viewmodel.user.UserViewModel
 import com.example.hilt.core.utils.toast
+import com.example.hilt.presentation.ui.user.viewmodelfactory.UserViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -18,17 +20,14 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
 
     @Inject
-    lateinit var viewModelFactory: UserViewModel.UserViewModelFactory
-    private val userViewModel: UserViewModel by viewModels {
-        UserViewModel.providesFactory(
-            viewModelFactory,
-            "ID"
-        )
-    }
+    lateinit var viewModelFactory: UserViewModelFactory
+    private lateinit var userViewModel: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register)
+
+        userViewModel = ViewModelProvider(this, viewModelFactory)[UserViewModel::class.java]
 
         binding.textViewLoginNow.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))

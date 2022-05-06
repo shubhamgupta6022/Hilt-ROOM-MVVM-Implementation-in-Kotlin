@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.hilt.R
 import com.example.hilt.core.model.User
@@ -14,6 +15,7 @@ import com.example.hilt.databinding.ActivityLoginBinding
 import com.example.hilt.presentation.viewmodel.user.UserViewModel
 import com.example.hilt.core.utils.toast
 import com.example.hilt.presentation.ui.profile.HomeActivity
+import com.example.hilt.presentation.ui.user.viewmodelfactory.UserViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,17 +28,14 @@ class LoginActivity : AppCompatActivity() {
     private var TAG = LoginActivity::class.simpleName
 
     @Inject
-    lateinit var viewModelFactory: UserViewModel.UserViewModelFactory
-    private val userViewModel: UserViewModel by viewModels {
-        UserViewModel.providesFactory(
-            viewModelFactory,
-            "ID"
-        )
-    }
+    lateinit var viewModelFactory: UserViewModelFactory
+    private lateinit var userViewModel: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+
+        userViewModel = ViewModelProvider(this, viewModelFactory)[UserViewModel::class.java]
 
         binding.buttonLogin.setOnClickListener {
             login()
