@@ -16,5 +16,5 @@ interface UserDao {
     suspend fun getUid(email: String, password: String): Int?
 
     @Query("SELECT * FROM User")
-    fun getAllUsers(): Flow<List<User>>
+    fun getAllUsers(): List<User>
 }

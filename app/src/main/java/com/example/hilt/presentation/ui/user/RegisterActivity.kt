@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.hilt.R
 import com.example.hilt.databinding.ActivityRegisterBinding
 import com.example.hilt.core.model.User
@@ -13,6 +14,8 @@ import com.example.hilt.presentation.viewmodel.user.UserViewModel
 import com.example.hilt.core.utils.toast
 import com.example.hilt.presentation.ui.user.viewmodelfactory.UserViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -40,7 +43,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun register() {
-
         userViewModel.insert(
             User(
                 uid = 0,
@@ -49,7 +51,7 @@ class RegisterActivity : AppCompatActivity() {
                 password = binding.editTextTextPassword.text.toString()
             )
         )
-        toast(this, "Success")
+        toast(this@RegisterActivity, "Success")
 
         startActivity(Intent(this, LoginActivity::class.java))
     }

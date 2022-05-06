@@ -18,6 +18,7 @@ import com.example.hilt.presentation.ui.profile.HomeActivity
 import com.example.hilt.presentation.ui.user.viewmodelfactory.UserViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -45,9 +46,11 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
 
-        userViewModel.allUsers.observe(this, Observer<List<User>> {
-            Log.d(TAG, "$it")
-        })
+        lifecycleScope.launch(Dispatchers.IO) {
+            userViewModel.usersList.collectLatest {
+                Log.d(TAG, "$it")
+            }
+        }
 
     }
 

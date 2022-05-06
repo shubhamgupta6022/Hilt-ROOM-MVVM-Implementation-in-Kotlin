@@ -18,7 +18,7 @@ class UserRepositoryImpl @Inject constructor(userDb: UserDb) : UserRepository {
         return userDao.getUid(email, password)
     }
 
-    override fun getAllUsers(): Flow<List<User>> {
+    override fun getAllUsers(): List<User> {
         return userDao.getAllUsers()
     }
 }

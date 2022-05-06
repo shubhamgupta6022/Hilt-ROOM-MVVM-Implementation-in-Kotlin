@@ -9,6 +9,6 @@ interface UserRepository {
 
     suspend fun getUid(email: String, password: String): Int?
 
-    fun getAllUsers(): Flow<List<User>>
+    fun getAllUsers(): List<User>
 
 }
