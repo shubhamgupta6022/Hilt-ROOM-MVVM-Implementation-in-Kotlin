@@ -1,7 +1,5 @@
 package com.example.hilt.domain.usecase.user
 
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import com.example.hilt.core.model.User
 import com.example.hilt.domain.repository.user.UserRepository
 import kotlinx.coroutines.delay
