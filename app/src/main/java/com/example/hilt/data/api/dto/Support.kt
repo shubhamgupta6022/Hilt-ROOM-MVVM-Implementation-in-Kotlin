@@ -1,4 +1,4 @@
-package com.example.hilt.domain.model
+package com.example.hilt.data.api.dto
 
 data class Support(
     val text: String,

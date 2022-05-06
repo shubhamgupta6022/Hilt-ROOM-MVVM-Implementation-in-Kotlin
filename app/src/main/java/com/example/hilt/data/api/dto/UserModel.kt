@@ -1,6 +1,6 @@
-package com.example.hilt.domain.model
+package com.example.hilt.data.api.dto
 
-import com.example.hilt.core.model.Data
+import com.example.hilt.domain.model.Data
 
 data class UserModel(
     val data: List<Data>,

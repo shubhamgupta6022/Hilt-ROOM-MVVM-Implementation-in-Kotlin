@@ -4,8 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.hilt.core.model.User
-import kotlinx.coroutines.flow.Flow
+import com.example.hilt.domain.model.User
 
 @Dao
 interface UserDao {

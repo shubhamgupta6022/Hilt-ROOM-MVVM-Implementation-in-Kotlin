@@ -1,8 +1,8 @@
 package com.example.hilt.application.di
 
 import android.app.Application
-import com.example.hilt.data.api.profile.ProfileApiService
-import com.example.hilt.data.api.profile.Retrofit
+import com.example.hilt.data.api.ProfileApiService
+import com.example.hilt.data.api.Retrofit
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 

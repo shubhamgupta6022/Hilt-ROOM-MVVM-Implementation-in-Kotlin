@@ -2,8 +2,7 @@ package com.example.hilt.presentation.viewmodel.profile
 
 
 import androidx.lifecycle.*
-import com.example.hilt.core.model.Data
-import com.example.hilt.domain.usecase.profile.GetObservableUsersUseCase
+import com.example.hilt.domain.model.Data
 import com.example.hilt.domain.usecase.profile.ProfileUseCases
 import javax.inject.Inject
 

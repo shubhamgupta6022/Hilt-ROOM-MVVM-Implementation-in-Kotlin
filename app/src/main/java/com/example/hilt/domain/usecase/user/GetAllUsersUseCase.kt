@@ -1,6 +1,6 @@
 package com.example.hilt.domain.usecase.user
 
-import com.example.hilt.core.model.User
+import com.example.hilt.domain.model.User
 import com.example.hilt.domain.repository.user.UserRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*

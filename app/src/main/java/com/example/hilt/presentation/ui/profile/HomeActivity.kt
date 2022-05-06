@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hilt.R
 import com.example.hilt.presentation.ui.profile.adapter.ProfileAdapter
 import com.example.hilt.databinding.ActivityHomeBinding
-import com.example.hilt.core.model.Data
+import com.example.hilt.domain.model.Data
 import com.example.hilt.presentation.ui.profile.viewmodelfactory.ProfileViewModelFactory
 import com.example.hilt.presentation.viewmodel.profile.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint

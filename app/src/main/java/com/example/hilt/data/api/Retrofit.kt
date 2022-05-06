@@ -1,4 +1,4 @@
-package com.example.hilt.data.api.profile
+package com.example.hilt.data.api
 
 import com.example.hilt.core.utils.profile.ProfileApiBaseUrl
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory

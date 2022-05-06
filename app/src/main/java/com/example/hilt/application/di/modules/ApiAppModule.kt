@@ -1,7 +1,7 @@
 package com.example.hilt.application.di.modules
 
-import com.example.hilt.data.api.profile.ProfileApiService
-import com.example.hilt.data.api.profile.Retrofit
+import com.example.hilt.data.api.ProfileApiService
+import com.example.hilt.data.api.Retrofit
 import com.example.hilt.data.repository.profile.ProfileRepositoryImpl
 import com.example.hilt.domain.repository.profile.ProfileRepository
 import dagger.Module

@@ -1,7 +1,6 @@
 package com.example.hilt.domain.repository.user
 
-import com.example.hilt.core.model.User
-import kotlinx.coroutines.flow.Flow
+import com.example.hilt.domain.model.User
 
 interface UserRepository {
 

@@ -2,7 +2,7 @@ package com.example.hilt.domain.usecase.profile
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.hilt.core.model.Data
+import com.example.hilt.domain.model.Data
 import com.example.hilt.domain.repository.profile.ProfileRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers

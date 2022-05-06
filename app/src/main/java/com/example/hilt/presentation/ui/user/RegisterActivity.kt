@@ -3,19 +3,15 @@ package com.example.hilt.presentation.ui.user
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.example.hilt.R
 import com.example.hilt.databinding.ActivityRegisterBinding
-import com.example.hilt.core.model.User
+import com.example.hilt.domain.model.User
 import com.example.hilt.presentation.viewmodel.user.UserViewModel
 import com.example.hilt.core.utils.toast
 import com.example.hilt.presentation.ui.user.viewmodelfactory.UserViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint

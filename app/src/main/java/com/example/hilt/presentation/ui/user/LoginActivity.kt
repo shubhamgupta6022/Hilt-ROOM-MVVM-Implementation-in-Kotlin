@@ -4,13 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.hilt.R
-import com.example.hilt.core.model.User
 import com.example.hilt.databinding.ActivityLoginBinding
 import com.example.hilt.presentation.viewmodel.user.UserViewModel
 import com.example.hilt.core.utils.toast
