@@ -1,5 +1,7 @@
 package com.example.hilt.domain.usecase.profile
 
-interface ProfileUseCase {
-    fun getObservableUsersUseCase(): GetObservableUsersUseCase
-}
+import javax.inject.Inject
+
+data class ProfileUseCase @Inject constructor(
+    val getObservableUsersUseCase: GetObservableUsersUseCase
+)
