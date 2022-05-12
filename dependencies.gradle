@@ -22,11 +22,10 @@ ext.versions = [
         rxandroidVersion       : '3.0.0',
         rxjava3Version         : '3.1.4',
 
-        // architecture components
-        fragmentVersion        : '1.4.1',
-        lifecycleVersion       : '2.4.1',
+        //room
         roomVersion            : '2.4.2',
-        archCompomentVersion   : '2.1.0',
+
+        // architecture components
         appCompact             : '1.4.1',
 
         // binding
