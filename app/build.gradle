@@ -24,9 +24,39 @@ android {
         }
     }
 
+    def BASE_URL = "BASE_URL"
+
+    flavorDimensions "dev", "minSdk"
+
+    productFlavors {
+        free {
+            dimension "dev"
+            applicationIdSuffix ".free"
+            buildConfigField "String", BASE_URL, '"https://freeServer.com"'
+        }
+        paid {
+            dimension "dev"
+            applicationIdSuffix ".paid"
+            buildConfigField "String", BASE_URL, '"https://paidServer.com"'
+        }
+        minSdk30 {
+            dimension "minSdk"
+            minSdk 30
+        }
+        minSdk21 {
+            dimension "minSdk"
+            minSdk 21
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        customDebug {
+            initWith debug
+            applicationIdSuffix ".customDebug"
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
