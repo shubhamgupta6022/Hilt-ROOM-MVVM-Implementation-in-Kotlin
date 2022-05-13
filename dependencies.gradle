@@ -43,28 +43,13 @@ ext.versions = [
         retrofitVersion        : '2.9.0',
         rxjavaAdapterVersion   : '2.1.0',
 
-
         // coroutines
         coroutinesVersion      : '2.4.1',
-
-        // whatIf
 
         // glide
         glideVersion           : '4.13.2',
         // bundler
         bundlerVersion         : '1.0.4',
-
-        // transformation
-
-        // adapter
-
-        // android ribbon
-
-        // progress view
-
-        // rainbow
-
-        // debugging
 
         // unit test
         junitVersion           : '4.13.2',
